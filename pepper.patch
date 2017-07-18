@@ -1,0 +1,10 @@
+--- pepper/pepperStart.sh.dist	2017-07-18 17:56:36.957964011 +0200
++++ pepper/pepperStart.sh	2017-07-18 17:56:10.257224695 +0200
+@@ -18,6 +18,6 @@
+ #
+ CLASS_PATH='-classpath lib/*:plugins/*'
+ EXEC_CLASS='org.corpus_tools.pepper.cli.PepperStarter'
+-VM_PARAMS='-Xmx1024m -XX:-UseGCOverheadLimit'
++VM_PARAMS='-Xmx8192m -XX:-UseGCOverheadLimit -XX:+UseG1GC -XX:+UseStringDeduplication'
+ JAVA_PARAMS=$CLASS_PATH' -Dlogback.configurationFile=./conf/logback.xml '$EXEC_CLASS' '$*
+ java $JAVA_PARAMS
