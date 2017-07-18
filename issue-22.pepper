@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<?xml-model href="https://korpling.german.hu-berlin.de/saltnpepper/pepper/schema/10/pepper.rnc" 
+               type="application/relax-ng-compact-syntax"?>
+<pepper-job version="1.0">
+    <importer name="TEIImporter" path="./tei/w_token_test/">
+		<customization>
+            <!-- You declare that there is one and only one element responsible
+                 for mapping tokens to Salt. Default is <w>. In this case
+                 token.tokenization.sub should be disabled, otherwise
+                 unexpected behaviour may occur.
+            -->
+            <property key="token.tokenization.defaulttag">true</property>
+            <!-- By default, the text nodes between elements will be imported
+                 as tokens everywhere. This option should only be disabled if
+                 you can guarantee that there is no text outside of the
+                 <w>-element or if you can get over losing parts of the primary
+                 text. 
+            -->
+            <property key="token.tokenization.sub">false</property>
+		</customization>
+	</importer>
+    <exporter name="ANNISExporter" path="./relannis/w_token_test/"/>
+</pepper-job> 
