@@ -4,6 +4,7 @@
 
 URL_DTM_CHKO="http://hdl.handle.net/10932/00-0379-FDFE-EB20-0401-1"
 NAME_DTM_CHKO="dortmunder-chatkorpus_part-1_v2.1.tgz"
+DIRNAME_DTM_CHKO="dortmunder-chatkorpus_part-1"
 
 URL_BASE_PEPPER="https://korpling.german.hu-berlin.de/saltnpepper/pepper/download/snapshot/"
 NAME_PEPPER="Pepper_2017.05.31-SNAPSHOT.zip"
@@ -20,9 +21,15 @@ download() {
 }
 
 download "${NAME_DTM_CHKO}" "${URL_DTM_CHKO}"
+[ -e tei/"${DIRNAME_DTM_CHKO}" ] \
+||
+{
+    mkdir -p tei
+    tar -xvf "${NAME_DTM_CHKO}" -C tei/
+}
 
 download "${NAME_PEPPER}" "${URL_BASE_PEPPER}/${NAME_PEPPER}"
-[ -e pepper/${NAME_PEPPER}.version ] \
+[ -e pepper/"${NAME_PEPPER}".version ] \
 || 
 { 
     { [ -e pepper/ ] && echo 'rm -rf pepper' && rm -rfI pepper/ ;}
